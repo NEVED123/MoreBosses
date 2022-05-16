@@ -23,7 +23,7 @@
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "more_bosses.mixins.json"
   ],
 
   "depends": {

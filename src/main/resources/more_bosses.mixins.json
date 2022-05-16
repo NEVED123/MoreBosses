@@ -6,7 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "ExampleMixin"
+    "ScarecrowZombieFleeGoal"
   ],
   "injectors": {
     "defaultRequire": 1
