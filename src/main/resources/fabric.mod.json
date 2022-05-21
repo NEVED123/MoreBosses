@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "net.fabricmc.example.MoreBosses"
+    ],
+    "client": [
+      "net.fabricmc.example.MoreBossesClient"
     ]
   },
   "mixins": [
