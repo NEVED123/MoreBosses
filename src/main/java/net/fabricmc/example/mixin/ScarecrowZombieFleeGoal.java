@@ -1,5 +1,6 @@
 package net.fabricmc.example.mixin;
 
+import net.fabricmc.example.entities.ZombieScarecrowEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.FleeEntityGoal;
@@ -28,7 +29,7 @@ public class ScarecrowZombieFleeGoal extends MobEntity{
 	@Inject(at = @At("HEAD"), method = "initCustomGoals()V")
 	private void init(CallbackInfo info)  {
 		this.goalSelector.add(3, new FleeEntityGoal(((ZombieEntity)(Object)this),
-				OcelotEntity.class/*placeholder*/, 6.0F, 1.0, 1.2)); //DON'T KNOW HOW TO SEARCH FOR CLASS ERROR
+				ZombieScarecrowEntity.class, 6.0F, 1.0, 1.2)); //DON'T KNOW HOW TO SEARCH FOR CLASS ERROR
 
 	}
 
