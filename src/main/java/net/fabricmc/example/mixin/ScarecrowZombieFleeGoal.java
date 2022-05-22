@@ -29,7 +29,7 @@ public class ScarecrowZombieFleeGoal extends MobEntity{
 	@Inject(at = @At("HEAD"), method = "initCustomGoals()V")
 	private void init(CallbackInfo info)  {
 		this.goalSelector.add(3, new FleeEntityGoal(((ZombieEntity)(Object)this),
-				ZombieScarecrowEntity.class, 6.0F, 1.0, 1.2)); //DON'T KNOW HOW TO SEARCH FOR CLASS ERROR
+				ZombieScarecrowEntity.class, 10.0F, 1.0, 1.2));
 
 	}
 
