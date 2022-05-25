@@ -19,7 +19,7 @@ public class MoreBossesClient implements ClientModInitializer {
          *
          * Entity Renderers can also manipulate the model before it renders based on entity context (EndermanEntityRenderer#render).
          */
-        EntityRendererRegistry.INSTANCE.register(MoreBosses.ZOMBIE_SCARECROW, (context) -> {
+        EntityRendererRegistry.INSTANCE.register(MoreBosses.ZOMBIE_SCARECROW_ENTITY, (context) -> {
             return new ZombieScarecrowRenderer(context);
         });
 
