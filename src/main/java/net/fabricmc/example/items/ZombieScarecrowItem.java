@@ -1,43 +1,24 @@
 package net.fabricmc.example.items;
 
 import net.fabricmc.example.entities.ZombieScarecrowEntity;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.minecraft.block.AbstractRailBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.MobSpawnerBlockEntity;
-import net.minecraft.block.enums.RailShape;
-import net.minecraft.entity.EntityDimensions;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.entity.*;
+
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.vehicle.AbstractMinecartEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.tag.BlockTags;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.MobSpawnerLogic;
-import net.minecraft.world.RaycastContext;
+import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Objects;
+import java.util.Random;
 
 import static net.fabricmc.example.MoreBosses.ZOMBIE_SCARECROW_ENTITY;
 
@@ -49,26 +30,39 @@ public class ZombieScarecrowItem extends Item {
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        HitResult hitResult = raycast(world, user, RaycastContext.FluidHandling.ANY);
-        if (hitResult.getType() != HitResult.Type.BLOCK) {
-            return TypedActionResult.pass(itemStack);
-        }
-        if(!world.isClient){
-            ZombieScarecrowEntity scarecrow = new ZombieScarecrowEntity(ZOMBIE_SCARECROW_ENTITY, world);
-            scarecrow.setPosition(hitResult.getPos());
-            world.spawnEntity(scarecrow);
-            world.emitGameEvent(user, GameEvent.ENTITY_PLACE, new BlockPos(hitResult.getPos()));
-        }
-        if (!user.getAbilities().creativeMode) {
-            itemStack.decrement(1);
-        }
+    public ActionResult useOnBlock(ItemUsageContext context) {
+        Direction direction = context.getSide();
+        if (direction == Direction.DOWN) {
+            return ActionResult.FAIL;
+        } else {
+            World world = context.getWorld();
+            ItemPlacementContext itemPlacementContext = new ItemPlacementContext(context);
+            BlockPos blockPos = itemPlacementContext.getBlockPos();
+            ItemStack itemStack = context.getStack();
+            Vec3d vec3d = Vec3d.ofBottomCenter(blockPos);
+            Box box = EntityType.ARMOR_STAND.getDimensions().getBoxAt(vec3d.getX(), vec3d.getY(), vec3d.getZ());
+            if (world.isSpaceEmpty((Entity)null, box) && world.getOtherEntities((Entity)null, box).isEmpty()) {
+                if (world instanceof ServerWorld) {
+                    ServerWorld serverWorld = (ServerWorld)world;
+                    ZombieScarecrowEntity zombieScarecrowEntity = (ZombieScarecrowEntity)ZOMBIE_SCARECROW_ENTITY.create(serverWorld, itemStack.getNbt(), (Text)null, context.getPlayer(), blockPos, SpawnReason.SPAWN_EGG, true, true);
+                    if (zombieScarecrowEntity == null) {
+                        return ActionResult.FAIL;
+                    }
 
-        return TypedActionResult.pass(itemStack);
+                    float f = (float)MathHelper.floor((MathHelper.wrapDegrees(context.getPlayerYaw() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
+                    zombieScarecrowEntity.refreshPositionAndAngles(zombieScarecrowEntity.getX(), zombieScarecrowEntity.getY(), zombieScarecrowEntity.getZ(), f, 0.0F);
+                    serverWorld.spawnEntityAndPassengers(zombieScarecrowEntity);
+                    world.playSound((PlayerEntity)null, zombieScarecrowEntity.getX(), zombieScarecrowEntity.getY(), zombieScarecrowEntity.getZ(), SoundEvents.ENTITY_ARMOR_STAND_PLACE, SoundCategory.BLOCKS, 0.75F, 0.8F);
+                    world.emitGameEvent(context.getPlayer(), GameEvent.ENTITY_PLACE, zombieScarecrowEntity);
+                }
 
+                itemStack.decrement(1);
+                return ActionResult.success(world.isClient);
+            } else {
+                return ActionResult.FAIL;
+            }
+        }
     }
-
 
 
 }
