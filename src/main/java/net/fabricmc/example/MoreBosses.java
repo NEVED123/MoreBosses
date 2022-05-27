@@ -29,10 +29,11 @@ public class MoreBosses implements ModInitializer {
 
 	public static final EntityType<ZombieScarecrowEntity> ZOMBIE_SCARECROW_ENTITY =
 			Registry.register(Registry.ENTITY_TYPE, new Identifier("more_bosses","zombie_scarecrow"),
-					FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, ZombieScarecrowEntity::new).
+					FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, ZombieScarecrowEntity::new). //CHANGE SPAWNGROUP TO MISC
 							dimensions(EntityDimensions.fixed(0.75f,0.75f)).build());
 
 	public static final Item ZOMBIE_SCARECROW_ITEM = new Item(new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item TOWER_OF_UNDYING_ITEM = new Item(new FabricItemSettings().group(ItemGroup.MISC));
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -41,5 +42,6 @@ public class MoreBosses implements ModInitializer {
 
 		FabricDefaultAttributeRegistry.register(ZOMBIE_SCARECROW_ENTITY, ZombieScarecrowEntity.createLivingAttributes());
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "zombie_scarecrow_item"), ZOMBIE_SCARECROW_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("more_bosses", "tower_of_undying_item"), TOWER_OF_UNDYING_ITEM);
 	}
 }
