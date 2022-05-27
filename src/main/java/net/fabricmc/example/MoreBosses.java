@@ -2,6 +2,8 @@ package net.fabricmc.example;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.example.entities.ZombieScarecrowEntity;
+import net.fabricmc.example.items.TowerOfUndying;
+import net.fabricmc.example.items.ZombieScarecrowItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -32,8 +34,8 @@ public class MoreBosses implements ModInitializer {
 					FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, ZombieScarecrowEntity::new). //CHANGE SPAWNGROUP TO MISC
 							dimensions(EntityDimensions.fixed(0.75f,0.75f)).build());
 
-	public static final Item ZOMBIE_SCARECROW_ITEM = new Item(new FabricItemSettings().group(ItemGroup.MISC));
-	public static final Item TOWER_OF_UNDYING_ITEM = new Item(new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item ZOMBIE_SCARECROW_ITEM = new ZombieScarecrowItem(new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item TOWER_OF_UNDYING_ITEM = new TowerOfUndying(new FabricItemSettings().group(ItemGroup.MISC));
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
