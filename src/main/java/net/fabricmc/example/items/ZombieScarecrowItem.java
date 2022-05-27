@@ -1,13 +1,12 @@
 package net.fabricmc.example.items;
 
 import net.fabricmc.example.entities.ZombieScarecrowEntity;
+import net.minecraft.block.Block;
 import net.minecraft.entity.*;
 
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -26,7 +25,6 @@ public class ZombieScarecrowItem extends Item {
 
     public ZombieScarecrowItem(Settings settings) {
         super(settings);
-
     }
 
     @Override
@@ -49,7 +47,7 @@ public class ZombieScarecrowItem extends Item {
                         return ActionResult.FAIL;
                     }
 
-                    float f = (float)MathHelper.floor((MathHelper.wrapDegrees(context.getPlayerYaw() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
+                    float f = (float)MathHelper.floor((MathHelper.wrapDegrees(context.getPlayerYaw() - 180.0F) + 22.5F) / 45.0F) * 45.0F; //makes scarecrow face player
                     zombieScarecrowEntity.refreshPositionAndAngles(zombieScarecrowEntity.getX(), zombieScarecrowEntity.getY(), zombieScarecrowEntity.getZ(), f, 0.0F);
                     serverWorld.spawnEntityAndPassengers(zombieScarecrowEntity);
                     world.playSound((PlayerEntity)null, zombieScarecrowEntity.getX(), zombieScarecrowEntity.getY(), zombieScarecrowEntity.getZ(), SoundEvents.ENTITY_ARMOR_STAND_PLACE, SoundCategory.BLOCKS, 0.75F, 0.8F);
@@ -63,6 +61,7 @@ public class ZombieScarecrowItem extends Item {
             }
         }
     }
+
 
 
 }
