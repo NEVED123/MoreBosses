@@ -15,16 +15,9 @@ public class ZombieScarecrowEntityModel extends BipedEntityModel<ZombieScarecrow
 
     public ZombieScarecrowEntityModel(ModelPart modelPart){
         super(modelPart, RenderLayer::getEntityCutoutNoCull);
-        //this.base = modelPart.getChild(EntityModelPartNames.CUBE);
     }
 
     public static TexturedModelData getTexturedModelData() {
-        /*ModelData modelData = new ModelData();
-        ModelPartData modelPartData = modelData.getRoot();
-        modelPartData.addChild(EntityModelPartNames.CUBE,
-                ModelPartBuilder.create().uv(0, 0).cuboid(-6F, 12F, -6F, 12F, 12F, 12F),
-                ModelTransform.pivot(0F, 0F, 0F));
-        return TexturedModelData.of(modelData, 64, 64);*/
         return TexturedModelData.of(getModelData(Dilation.NONE, 0F), 64, 64);
     }
 
