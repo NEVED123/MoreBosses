@@ -14,13 +14,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-
-/*@Mixin(MobEntity.class)
-interface GoalSelectorAccessor{
-	@Accessor
-	GoalSelector getGoalSelector();
-}*/
-
 @Mixin(ZombieEntity.class)
 public class ScarecrowZombieFleeGoal extends MobEntity{
 	public ScarecrowZombieFleeGoal(EntityType<? extends MobEntity> entityType, World world){
