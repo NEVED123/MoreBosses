@@ -7,16 +7,12 @@
   ],
   "client": [
     "ScarecrowCreeperFleeGoal",
-    "ScarecrowEvokerFleeGoal",
-    "ScarecrowPhantomFleeGoal",
-    "ScarecrowPillagerFleeGoal",
-    "ScarecrowRavagerFleeGoal",
+    "ScarecrowZombieFleeGoal",
+    "ScarecrowRaiderFleeGoal",
     "ScarecrowSilverfishFleeGoal",
-    "ScarecrowSkeletonFleeGoal",
-    "ScarecrowSlimeFleeGoal",
-    "ScarecrowSpiderFleeGoal",
-    "ScarecrowVindicatorFleeGoal",
-    "ScarecrowZombieFleeGoal"
+    "ScarecrowAbstractSkeletonFleeGoal",
+    "ScarecrowSpiderFleeGoal"
+
   ],
   "injectors": {
     "defaultRequire": 1

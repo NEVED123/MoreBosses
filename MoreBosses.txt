@@ -32,6 +32,16 @@ BOSS MOBS
                     Durability: equal to diamond
         SPAWNING: Spawns in Deep Oceans, is twice as rare as Temples
 
+TEMP
+
+    "ScarecrowRaiderFleeGoal",
+    "ScarecrowSilverfishFleeGoal",
+    "ScarecrowSkeletonFleeGoal",
+    "ScarecrowSlimeFleeGoal",
+    "ScarecrowSpiderFleeGoal",
+    "ScarecrowVindicatorFleeGoal",
+    "ScarecrowVexFleeGoal"
+    "ScarecrowIllagerFleeGoal"
 
 
 
