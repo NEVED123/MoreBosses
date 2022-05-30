@@ -26,7 +26,7 @@ public class ScarecrowZombieFleeGoal extends MobEntity{
 	public ScarecrowZombieFleeGoal(EntityType<? extends MobEntity> entityType, World world){
 		super(entityType, world);
 	}
-	@Inject(at = @At("HEAD"), method = "initCustomGoals()V")
+	@Inject(at = @At("HEAD"), method = "initGoals()V")
 	private void init(CallbackInfo info)  {
 		this.goalSelector.add(3, new FleeEntityGoal(((ZombieEntity)(Object)this),
 				ZombieScarecrowEntity.class, 100.0F, 1.0, 1.2));
@@ -34,6 +34,8 @@ public class ScarecrowZombieFleeGoal extends MobEntity{
 	}
 
 }
+
+
 
 
 

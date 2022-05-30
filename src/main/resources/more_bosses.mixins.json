@@ -6,6 +6,17 @@
   "mixins": [
   ],
   "client": [
+    "ScarecrowCaveSpiderFleeGoal",
+    "ScarecrowCreeperFleeGoal",
+    "ScarecrowEvokerFleeGoal",
+    "ScarecrowPhantomFleeGoal",
+    "ScarecrowPillagerFleeGoal",
+    "ScarecrowRavagerFleeGoal",
+    "ScarecrowSilverfishFleeGoal",
+    "ScarecrowSkeletonFleeGoal",
+    "ScarecrowSlimeFleeGoal",
+    "ScarecrowSpiderFleeGoal",
+    "ScarecrowVindicatorFleeGoal",
     "ScarecrowZombieFleeGoal"
   ],
   "injectors": {
