@@ -1,4 +1,4 @@
-package net.fabricmc.example.mixin;
+package net.fabricmc.example.mixin.flee_goals;
 
 import net.fabricmc.example.entities.ZombieScarecrowEntity;
 import net.minecraft.entity.EntityType;
