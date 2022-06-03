@@ -1,6 +1,7 @@
 package net.fabricmc.example.entities;
 
 import net.minecraft.entity.*;
+import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -15,31 +16,14 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 
-public class TowerOfUndyingEntity extends LivingEntity {
+public class TowerOfUndyingEntity extends FireworkRocketEntity {
 
-    public TowerOfUndyingEntity(EntityType<? extends LivingEntity> entityType, World world) {
+    public TowerOfUndyingEntity(EntityType<? extends FireworkRocketEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    @Override
-    public Iterable<ItemStack> getArmorItems() {
-        return new ArrayList<ItemStack>();
-    }
 
-    @Override
-    public ItemStack getEquippedStack(EquipmentSlot slot) {
-        return ItemStack.EMPTY;
-    }
 
-    @Override
-    public void equipStack(EquipmentSlot slot, ItemStack stack) {
-
-    }
-
-    @Override
-    public Arm getMainArm() {
-        return null;
-    }
 
 
 

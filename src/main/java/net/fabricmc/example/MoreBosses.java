@@ -37,8 +37,9 @@ public class MoreBosses implements ModInitializer {
 
 	public static final EntityType<TowerOfUndyingEntity> TOWER_OF_UNDYING_ENTITY =
 			Registry.register(Registry.ENTITY_TYPE, new Identifier("more_bosses","tower_of_undying"),
-			FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, TowerOfUndyingEntity::new). //CHANGE SPAWNGROUP TO MISC
-					dimensions(EntityDimensions.fixed(0.5f,0.5f)).build());
+			FabricEntityTypeBuilder.<TowerOfUndyingEntity>create(SpawnGroup.MISC, TowerOfUndyingEntity::new)
+					.dimensions(EntityDimensions.fixed(.25F, .25F))
+					.build());
 
 	public static final Item ZOMBIE_SCARECROW_ITEM = new ZombieScarecrowItem(new FabricItemSettings().group(ItemGroup.MISC));
 	public static final Item TOWER_OF_UNDYING_ITEM = new TowerOfUndying(new FabricItemSettings().group(ItemGroup.MISC));
@@ -47,7 +48,7 @@ public class MoreBosses implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-		FabricDefaultAttributeRegistry.register(TOWER_OF_UNDYING_ENTITY, TowerOfUndyingEntity.createLivingAttributes());
+		//FabricDefaultAttributeRegistry.register(TOWER_OF_UNDYING_ENTITY, TowerOfUndyingEntity);
 		FabricDefaultAttributeRegistry.register(ZOMBIE_SCARECROW_ENTITY, ZombieScarecrowEntity.createLivingAttributes());
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "zombie_scarecrow_item"), ZOMBIE_SCARECROW_ITEM);
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "tower_of_undying_item"), TOWER_OF_UNDYING_ITEM);
