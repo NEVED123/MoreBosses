@@ -1,35 +1,28 @@
 package net.fabricmc.example.models;
 
+import net.fabricmc.example.entities.TowerOfUndyingEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.render.entity.model.EntityModelPartNames;
+import net.minecraft.client.render.entity.model.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import org.spongepowered.include.com.google.common.collect.ImmutableList;
 
-public class TowerOfUndyingEntityModel extends EntityModel {
+public class TowerOfUndyingEntityModel extends SinglePartEntityModel<TowerOfUndyingEntity> {
 
     private ModelPart base;
 
     public TowerOfUndyingEntityModel(ModelPart modelPart){
+        super(RenderLayer::getEntityCutoutNoCull);
         this.base = modelPart.getChild(EntityModelPartNames.CUBE);
     }
 
     public static TexturedModelData getTexturedModelData(){
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
-        modelPartData.addChild(EntityModelPartNames.CUBE,
-                ModelPartBuilder.create().uv(0,0).
-                        cuboid(-2F, 4F, -2F, 4F, 8F, 4F),
-                ModelTransform.pivot(0F,0F,0F));
-        return TexturedModelData.of(modelData, 32, 32);
-    }
-
-    @Override
-    public void setAngles(Entity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-
+        modelPartData.addChild(EntityModelPartNames.CUBE, ModelPartBuilder.create().uv(0, 0).cuboid(-6F, 12F, -6F, 12F, 12F, 12F), ModelTransform.pivot(0F, 0F, 0F));
+        return TexturedModelData.of(modelData, 64, 64);
     }
 
     @Override
@@ -37,6 +30,17 @@ public class TowerOfUndyingEntityModel extends EntityModel {
         ImmutableList.of(this.base).forEach((modelRenderer) -> {
             modelRenderer.render(matrices, vertices, light, overlay, red, green, blue, alpha);
         });
+    }
+
+    @Override
+    public ModelPart getPart() {
+        return this.base;
+    }
+
+
+    @Override
+    public void setAngles(TowerOfUndyingEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+
     }
 }
 
