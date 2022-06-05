@@ -3,6 +3,7 @@ package net.fabricmc.example.entities;
 import com.mojang.authlib.yggdrasil.response.User;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.Item;
@@ -23,10 +24,12 @@ import java.util.ArrayList;
 
 public class TowerOfUndyingEntity extends LivingEntity{
 
+    //private int timeSinceSpawn;
+
     public TowerOfUndyingEntity(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
-    }
 
+    }
     @Override
     public Iterable<ItemStack> getArmorItems() {
         return new ArrayList<ItemStack>();
@@ -47,11 +50,24 @@ public class TowerOfUndyingEntity extends LivingEntity{
         return null;
     }
 
+    @Override
+    public boolean damage(DamageSource source, float amount){
+        if(source == DamageSource.OUT_OF_WORLD)
+            return super.damage(source, amount);
+        else
+            return false;
+    }
 
-   /*public void tick(){
+    public void tick(){
+        super.tick();
         if(!world.isClient()){
-            BlockPos pos = this.getBlockPos();
-            pos.add(.01, .01, .01);
+            if(this.age < 40){
+                this.setRotation(getYaw() + (float)Math.pow(this.age, 2)/200, 0);
+                System.out.println("Rotation factor: " + Math.pow(this.age, 2)/200);
+            }
         }
-   }*/
+    }
+
+
+
 }
