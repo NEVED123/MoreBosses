@@ -14,7 +14,6 @@ public class TowerOfUndyingEntityModel extends SinglePartEntityModel<TowerOfUndy
     private ModelPart base;
 
     public TowerOfUndyingEntityModel(ModelPart modelPart){
-        super(RenderLayer::getEntityCutoutNoCull);
         this.base = modelPart.getChild(EntityModelPartNames.CUBE);
     }
 

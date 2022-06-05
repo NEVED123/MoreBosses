@@ -1,6 +1,8 @@
 package net.fabricmc.example.items;
 
+import net.fabricmc.example.MoreBosses;
 import net.fabricmc.example.entities.TowerOfUndyingEntity;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,9 +30,9 @@ public class TowerOfUndying extends Item {
 
         ItemStack itemStack = user.getStackInHand(hand);
         if(!world.isClient()){
-            TowerOfUndyingEntity towerOfUndyingEntity = new TowerOfUndyingEntity(world, null, user.getX(), user.getY(), user.getZ(), itemStack);
-            world.spawnEntity(towerOfUndyingEntity);
             ServerWorld serverWorld = (ServerWorld)world;
+            TowerOfUndyingEntity towerOfUndyingEntity = MoreBosses.TOWER_OF_UNDYING_ENTITY.create(serverWorld, null, null, user, user.getBlockPos(), SpawnReason.SPAWN_EGG, true, false);
+            serverWorld.spawnEntity(towerOfUndyingEntity);
             Raid raid = serverWorld.getRaidAt(user.getBlockPos());
             if(raid != null && raid.isActive()){
                 raid.invalidate();

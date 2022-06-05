@@ -2,11 +2,14 @@ package net.fabricmc.example.entities;
 
 import com.mojang.authlib.yggdrasil.response.User;
 import net.minecraft.entity.*;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
+import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Arm;
@@ -18,18 +21,31 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-public class TowerOfUndyingEntity extends FireworkRocketEntity{
+public class TowerOfUndyingEntity extends LivingEntity{
 
-    public TowerOfUndyingEntity(EntityType<? extends FireworkRocketEntity> entityType, World world) {
+    public TowerOfUndyingEntity(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public TowerOfUndyingEntity(World world, @Nullable Entity entity, double x, double y, double z, ItemStack stack){
-        super(world, entity, x, y, z, stack);
+    @Override
+    public Iterable<ItemStack> getArmorItems() {
+        return new ArrayList<ItemStack>();
     }
 
+    @Override
+    public ItemStack getEquippedStack(EquipmentSlot slot) {
+        return ItemStack.EMPTY;
+    }
 
+    @Override
+    public void equipStack(EquipmentSlot slot, ItemStack stack) {
 
+    }
+
+    @Override
+    public Arm getMainArm() {
+        return null;
+    }
 
 
    /*public void tick(){
