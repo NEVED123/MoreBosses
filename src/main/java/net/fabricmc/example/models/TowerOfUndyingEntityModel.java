@@ -14,7 +14,7 @@ public class TowerOfUndyingEntityModel extends SinglePartEntityModel<TowerOfUndy
     private ModelPart base;
 
     public TowerOfUndyingEntityModel(ModelPart modelPart){
-        this.base = modelPart.getChild(EntityModelPartNames.CUBE);
+        this.base = modelPart;
     }
 
     public static TexturedModelData getTexturedModelData() {
