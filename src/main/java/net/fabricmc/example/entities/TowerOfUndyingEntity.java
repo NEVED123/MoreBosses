@@ -1,6 +1,7 @@
 package net.fabricmc.example.entities;
 
 import com.mojang.authlib.yggdrasil.response.User;
+import net.fabricmc.example.MoreBosses;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.damage.DamageSource;
@@ -15,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
@@ -131,6 +133,10 @@ public class TowerOfUndyingEntity extends LivingEntity{
         }
         this.towerAge = nbt.getInt("towerAge");
         System.out.println("read custom data");
+    }
+
+    public ItemStack getPickBlockStack(){
+        return new ItemStack(MoreBosses.TOWER_OF_UNDYING_ITEM);
     }
 
 
