@@ -24,11 +24,10 @@ import java.util.ArrayList;
 
 public class TowerOfUndyingEntity extends LivingEntity{
 
-    //private int timeSinceSpawn;
 
     public TowerOfUndyingEntity(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
-
+        this.setNoGravity(true);
     }
     @Override
     public Iterable<ItemStack> getArmorItems() {
@@ -61,10 +60,17 @@ public class TowerOfUndyingEntity extends LivingEntity{
     public void tick(){
         super.tick();
         if(!world.isClient()){
-            if(this.age < 40){
-                this.setRotation(getYaw() + (float)Math.pow(this.age, 2)/200, 0);
-                System.out.println("Rotation factor: " + Math.pow(this.age, 2)/200);
+            if(this.age < 160){
+                this.setRotation(this.getYaw() + (float)this.age/4, getPitch());
             }
+            else if(this.age < 220){
+                this.setRotation(this.getYaw() + 40, getPitch());
+                this.setVelocity(0, (float)(this.age-160)/100, 0);
+            }
+            else{
+                this.remove(RemovalReason.DISCARDED);
+            }
+
         }
     }
 
