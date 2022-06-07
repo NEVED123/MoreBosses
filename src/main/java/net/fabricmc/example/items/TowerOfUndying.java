@@ -32,16 +32,9 @@ public class TowerOfUndying extends Item {
         if(!world.isClient()){
             ServerWorld serverWorld = (ServerWorld)world;
             TowerOfUndyingEntity towerOfUndyingEntity = MoreBosses.TOWER_OF_UNDYING_ENTITY.create(serverWorld, null, null, user, user.getBlockPos(), SpawnReason.SPAWN_EGG, true, false);
+            towerOfUndyingEntity.setOwnerUuid(user.getUuid());
             serverWorld.spawnEntity(towerOfUndyingEntity);
-            Raid raid = serverWorld.getRaidAt(user.getBlockPos());
-            if(raid != null && raid.isActive()){
-                raid.invalidate();
-                for(RaiderEntity raider : raid.getAllRaiders()){
-                    raider.kill();
-                }
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 48000, 1, false, false, true));
-                user.incrementStat(Stats.RAID_WIN);
-            }
+            itemStack.decrement(1);
             return TypedActionResult.success(itemStack, true);
         }
 
