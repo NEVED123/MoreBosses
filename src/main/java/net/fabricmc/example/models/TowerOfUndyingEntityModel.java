@@ -20,7 +20,8 @@ public class TowerOfUndyingEntityModel extends SinglePartEntityModel<TowerOfUndy
     public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
-        modelPartData.addChild(EntityModelPartNames.CUBE, ModelPartBuilder.create().uv(0, 0).cuboid(-6F, 12F, -6F, 12F, 12F, 12F), ModelTransform.pivot(0F, 0F, 0F));
+        modelPartData.addChild("base", ModelPartBuilder.create().uv(0, 0).cuboid(-2F, 8F, -2F, 4F, 16F, 4F), ModelTransform.pivot(0F, 0F, 0F));
+        modelPartData.addChild("top_wing", ModelPartBuilder.create().uv(0,20).cuboid(2F, 12F, -2F, 3F, 2F, 4F), ModelTransform.pivot(0F,0F,0F));
         return TexturedModelData.of(modelData, 64, 64);
     }
 
