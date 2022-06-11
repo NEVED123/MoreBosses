@@ -1,7 +1,10 @@
 package net.fabricmc.example.mixin.flee_goals;
 
+import net.fabricmc.example.entities.TowerOfUndyingEntity;
 import net.fabricmc.example.entities.ZombieScarecrowEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.goal.ActiveTargetGoal;
+import net.minecraft.entity.ai.goal.AttackGoal;
 import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.raid.RaiderEntity;
@@ -20,7 +23,8 @@ public class ScarecrowRaiderFleeGoal extends MobEntity {
     private void init(CallbackInfo info)  {
         this.goalSelector.add(3, new FleeEntityGoal(((RaiderEntity)(Object)this),
                 ZombieScarecrowEntity.class, 100.0F, 1.0, 1.2));
-
+        this.goalSelector.add(6, new ActiveTargetGoal(((RaiderEntity)(Object)this),
+                TowerOfUndyingEntity.class, false));
     }
 
 }

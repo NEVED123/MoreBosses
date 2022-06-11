@@ -42,7 +42,7 @@ public class TowerOfUndyingEntity extends LivingEntity{
         super(entityType, world);
         this.setNoGravity(true);
         towerAge = 0;
-        System.out.println("Tower Of Undying Entity Constructor");
+        this.setHealth(5);
     }
 
     @Override
@@ -69,8 +69,11 @@ public class TowerOfUndyingEntity extends LivingEntity{
     public boolean damage(DamageSource source, float amount){
         if(source == DamageSource.OUT_OF_WORLD)
             return super.damage(source, amount);
-        else
-            return false;
+        if(source.getAttacker() instanceof RaiderEntity){
+            return super.damage(source, amount);
+        }
+
+        return false;
     }
 
     public void tick(){
