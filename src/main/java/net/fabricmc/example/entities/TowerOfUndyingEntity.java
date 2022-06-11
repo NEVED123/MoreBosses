@@ -73,7 +73,7 @@ public class TowerOfUndyingEntity extends LivingEntity{
             return false;
     }
 
-    /*public void tick(){
+    public void tick(){
         super.tick();
         towerAge++;
         if(!world.isClient()){
@@ -103,7 +103,7 @@ public class TowerOfUndyingEntity extends LivingEntity{
                 this.remove(RemovalReason.DISCARDED);
             }
         }
-    }*/
+    }
 
     public PlayerEntity getOwner(){
         return (PlayerEntity)((ServerWorld)this.world).getEntity(this.ownerUuid);
