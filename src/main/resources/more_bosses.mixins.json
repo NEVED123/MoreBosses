@@ -12,7 +12,6 @@
     "flee_goals/ScarecrowSilverfishFleeGoal",
     "flee_goals/ScarecrowAbstractSkeletonFleeGoal",
     "flee_goals/ScarecrowSpiderFleeGoal",
-    "SwimmersBootsBehavior"
   ],
   "injectors": {
     "defaultRequire": 1
