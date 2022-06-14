@@ -1,6 +1,7 @@
 package net.fabricmc.example;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.example.entities.GiantBossEntity;
 import net.fabricmc.example.entities.TowerOfUndyingEntity;
 import net.fabricmc.example.entities.ZombieScarecrowEntity;
 import net.fabricmc.example.items.TowerOfUndying;
@@ -36,6 +37,11 @@ public class MoreBosses implements ModInitializer {
 					.dimensions(EntityDimensions.fixed(.25F, .25F))
 					.build());
 
+	public static final EntityType<GiantBossEntity> GIANT_BOSS_ENTITY = Registry.register(Registry.ENTITY_TYPE, new Identifier("more_bosses","giant_boss_entity"),
+			FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, GiantBossEntity::new)
+					.dimensions(EntityDimensions.fixed(.25F, .25F))
+					.build());
+
 	public static final Item ZOMBIE_SCARECROW_ITEM = new ZombieScarecrowItem(new FabricItemSettings().group(ItemGroup.MISC));
 	public static final Item TOWER_OF_UNDYING_ITEM = new TowerOfUndying(new FabricItemSettings().group(ItemGroup.MISC));
 
@@ -47,6 +53,8 @@ public class MoreBosses implements ModInitializer {
 		// Proceed with mild caution.
 		FabricDefaultAttributeRegistry.register(ZOMBIE_SCARECROW_ENTITY, ZombieScarecrowEntity.createLivingAttributes());
 		FabricDefaultAttributeRegistry.register(TOWER_OF_UNDYING_ENTITY, TowerOfUndyingEntity.createLivingAttributes());
+		FabricDefaultAttributeRegistry.register(GIANT_BOSS_ENTITY, GiantBossEntity.createGiantAttributes());
+
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "zombie_scarecrow_item"), ZOMBIE_SCARECROW_ITEM);
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "tower_of_undying_item"), TOWER_OF_UNDYING_ITEM);
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "swimmers_boots"), SWIMMERS_BOOTS);
