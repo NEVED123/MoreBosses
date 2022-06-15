@@ -37,7 +37,7 @@ public class MoreBossesClient implements ClientModInitializer {
 
 
         EntityRendererRegistry.INSTANCE.register(MoreBosses.GIANT_BOSS_ENTITY, (context) -> {
-            return new GiantBossEntityRenderer(context, 3);
+            return new GiantBossEntityRenderer(context);
         });
 
         EntityModelLayerRegistry.registerModelLayer(MODEL_GIANT_BOSS_LAYER, GiantBossEntityModel::getTexturedModelData);
