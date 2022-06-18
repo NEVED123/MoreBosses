@@ -35,7 +35,7 @@ public class MoreBosses implements ModInitializer {
 
 	public static final EntityType<GiantBossEntity> GIANT_BOSS_ENTITY = Registry.register(Registry.ENTITY_TYPE, new Identifier("more_bosses","giant_boss_entity"),
 			FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, GiantBossEntity::new)
-					.dimensions(EntityDimensions.fixed(.25F, .25F))
+					.dimensions(EntityDimensions.fixed(3F, 12F))
 					.build());
 
 	public static final Item ZOMBIE_SCARECROW_ITEM = new ZombieScarecrowItem(new FabricItemSettings().group(ItemGroup.MISC));
