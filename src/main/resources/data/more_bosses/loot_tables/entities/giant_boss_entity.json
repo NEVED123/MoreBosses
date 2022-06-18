@@ -29,6 +29,16 @@
                     "name": "minecraft:iron_block"
                 }
             ]
+        },
+        {
+            "rolls": 1.0,
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "more_bosses:zombie_scarecrow_item"
+                }
+            ]
         }
     ]
 }
