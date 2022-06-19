@@ -1,5 +1,6 @@
 package net.fabricmc.example.entities;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -23,6 +24,7 @@ public class GiantBossEntity extends GiantEntity {
     public GiantBossEntity(EntityType<? extends GiantEntity> entityType, World world) {
         super(entityType, world);
         bossBar = (ServerBossBar)(new ServerBossBar(new LiteralText("Giant"), BossBar.Color.PURPLE, BossBar.Style.PROGRESS)).setDarkenSky(true);
+        this.setPersistent();
     }
 
     protected void initGoals(){
@@ -51,14 +53,16 @@ public class GiantBossEntity extends GiantEntity {
         bossBar.addPlayer(player);
     }
 
+    public void onStoppedTrackingBy(ServerPlayerEntity player){
+        super.onStoppedTrackingBy(player);
+        bossBar.removePlayer(player);
+    }
+
     public void mobTick(){
         bossBar.setPercent(this.getHealth()/this.getMaxHealth());
     }
 
-    public void onDeath(DamageSource source){
-        for(ServerPlayerEntity player : bossBar.getPlayers()){
-            bossBar.removePlayer(player);
-        }
-    }
+
+
 
 }
