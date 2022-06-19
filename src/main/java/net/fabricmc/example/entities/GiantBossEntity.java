@@ -26,7 +26,7 @@ public class GiantBossEntity extends GiantEntity {
     }
 
     public static DefaultAttributeContainer.Builder createGiantEntityAttributes() {
-        return HostileEntity.createHostileAttributes()
+        return DefaultAttributeContainer.builder()
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 30.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 100.0)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 2)
