@@ -41,12 +41,23 @@ public class GiantBossEntity extends GiantEntity {
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 200)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1)
                 .add(EntityAttributes.GENERIC_ARMOR)
-                .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS);
+                .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)
+                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.5);
     }
 
     public void onStartedTrackingBy(ServerPlayerEntity player){
         super.onStartedTrackingBy(player);
         bossBar.addPlayer(player);
+    }
+
+    public void mobTick(){
+        bossBar.setPercent(this.getHealth()/this.getMaxHealth());
+    }
+
+    public void onDeath(DamageSource source){
+        for(ServerPlayerEntity player : bossBar.getPlayers()){
+            bossBar.removePlayer(player);
+        }
     }
 
 }
