@@ -13,6 +13,7 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.LiteralText;
 import net.minecraft.world.World;
 import org.lwjgl.system.Pointer;
 
@@ -21,7 +22,7 @@ public class GiantBossEntity extends GiantEntity {
     private ServerBossBar bossBar;
     public GiantBossEntity(EntityType<? extends GiantEntity> entityType, World world) {
         super(entityType, world);
-        bossBar = (ServerBossBar)(new ServerBossBar(this.getDisplayName(), BossBar.Color.PURPLE, BossBar.Style.PROGRESS)).setDarkenSky(true);
+        bossBar = (ServerBossBar)(new ServerBossBar(new LiteralText("Giant"), BossBar.Color.PURPLE, BossBar.Style.PROGRESS)).setDarkenSky(true);
     }
 
     protected void initGoals(){
