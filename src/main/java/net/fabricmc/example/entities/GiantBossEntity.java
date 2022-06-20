@@ -30,7 +30,7 @@ public class GiantBossEntity extends GiantEntity {
     protected void initGoals(){
         this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(3, new LookAroundGoal(this));
-        this.targetSelector.add(8, new ActiveTargetGoal(this, PlayerEntity.class, true));
+        this.targetSelector.add(8, new ActiveTargetGoal(this, PlayerEntity.class, false));
         this.goalSelector.add(8, new MeleeAttackGoal(this, 1.0, true));
         this.targetSelector.add(3, new WanderAroundGoal(this, 0.5));
     }
