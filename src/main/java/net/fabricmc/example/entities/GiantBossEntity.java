@@ -15,8 +15,11 @@ import net.minecraft.entity.mob.GiantEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.tag.TagKey;
 import net.minecraft.text.LiteralText;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.lwjgl.system.Pointer;
 
@@ -27,9 +30,11 @@ public class GiantBossEntity extends GiantEntity {
         super(entityType, world);
         bossBar = (ServerBossBar)(new ServerBossBar(new LiteralText("Giant"), BossBar.Color.PURPLE, BossBar.Style.PROGRESS)).setDarkenSky(true);
         this.setPersistent();
+        this.getNavigation().setCanSwim(true);
     }
 
     protected void initGoals(){
+        this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(3, new LookAroundGoal(this));
         this.targetSelector.add(8, new ActiveTargetGoal(this, PlayerEntity.class, false));
@@ -63,6 +68,21 @@ public class GiantBossEntity extends GiantEntity {
 
     public void mobTick(){
         bossBar.setPercent(this.getHealth()/this.getMaxHealth());
+    }
+
+    public double getSwimHeight(){
+        return 6;
+    }
+
+    protected void swimUpward(TagKey<Fluid> fluid){
+        //allows Giant to get onto land from water
+        if(this.horizontalCollision){
+            Vec3d initialVelocity = this.getVelocity();
+            this.setVelocity(initialVelocity.x, 2, initialVelocity.y);
+        }
+        else{
+            super.swimUpward(fluid);
+        }
     }
 
 
