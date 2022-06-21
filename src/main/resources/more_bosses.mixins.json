@@ -12,6 +12,7 @@
     "flee_goals/ScarecrowSilverfishFleeGoal",
     "flee_goals/ScarecrowAbstractSkeletonFleeGoal",
     "flee_goals/ScarecrowSpiderFleeGoal",
+    "boss_spawning/SpawnGiantBoss"
   ],
   "injectors": {
     "defaultRequire": 1
