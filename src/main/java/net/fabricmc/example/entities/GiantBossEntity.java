@@ -1,6 +1,8 @@
 package net.fabricmc.example.entities;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -31,8 +33,9 @@ public class GiantBossEntity extends GiantEntity {
         this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(3, new LookAroundGoal(this));
         this.targetSelector.add(8, new ActiveTargetGoal(this, PlayerEntity.class, false));
-        this.goalSelector.add(8, new MeleeAttackGoal(this, 1.0, true));
-        this.targetSelector.add(3, new WanderAroundGoal(this, 0.5));
+        this.goalSelector.add(8, new MeleeAttackGoal(this, 1.0, false));
+        this.goalSelector.add(3, new WanderAroundGoal(this, 0.5));
+        this.targetSelector.add(1, new RevengeGoal(this, new Class[0]));
     }
 
     public static DefaultAttributeContainer.Builder createGiantEntityAttributes() {
@@ -61,8 +64,6 @@ public class GiantBossEntity extends GiantEntity {
     public void mobTick(){
         bossBar.setPercent(this.getHealth()/this.getMaxHealth());
     }
-
-
 
 
 }
