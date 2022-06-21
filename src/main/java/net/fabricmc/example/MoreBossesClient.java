@@ -2,12 +2,12 @@ package net.fabricmc.example;
 
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.example.MoreBosses;
-import net.fabricmc.example.entities.GiantBossEntity;
 import net.fabricmc.example.models.GiantBossEntityModel;
+import net.fabricmc.example.models.GiantPillagerBossEntityModel;
 import net.fabricmc.example.models.TowerOfUndyingEntityModel;
 import net.fabricmc.example.models.ZombieScarecrowEntityModel;
 import net.fabricmc.example.renderers.GiantBossEntityRenderer;
+import net.fabricmc.example.renderers.GiantPillagerBossEntityRenderer;
 import net.fabricmc.example.renderers.TowerOfUndyingRenderer;
 import net.fabricmc.example.renderers.ZombieScarecrowRenderer;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
@@ -20,6 +20,8 @@ public class MoreBossesClient implements ClientModInitializer {
     public static final EntityModelLayer MODEL_TOWER_OF_UNDYING_LAYER = new EntityModelLayer(new Identifier("more_bosses", "tower_of_undying"), "main");
 
     public static final EntityModelLayer MODEL_GIANT_BOSS_LAYER = new EntityModelLayer(new Identifier("more_bosses", "giant_boss"), "main");
+
+    public static final EntityModelLayer MODEL_GIANT_PILlAGER_LAYER = new EntityModelLayer(new Identifier("more_bosses", "giant_pillager_boss"), "main");
     @Override
     public void onInitializeClient() {
 
@@ -41,5 +43,11 @@ public class MoreBossesClient implements ClientModInitializer {
         });
 
         EntityModelLayerRegistry.registerModelLayer(MODEL_GIANT_BOSS_LAYER, GiantBossEntityModel::getTexturedModelData);
+
+        EntityRendererRegistry.INSTANCE.register(MoreBosses.GIANT_PILLAGER_BOSS_ENTITY, (context) -> {
+            return new GiantPillagerBossEntityRenderer(context);
+        });
+
+        EntityModelLayerRegistry.registerModelLayer(MODEL_GIANT_PILlAGER_LAYER, GiantPillagerBossEntityModel::getTexturedModelData);
     }
 }
