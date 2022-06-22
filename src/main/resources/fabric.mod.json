@@ -3,10 +3,10 @@
   "id": "more_bosses",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "MoreBosses",
+  "description": "Minecraft Mod which aims to add more bosses, to make those bosses more difficult to find/kill, and get more reward from killing them",
   "authors": [
-    "Me!"
+    "Deven Mallamo"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
