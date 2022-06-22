@@ -5,8 +5,8 @@ import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.GiantEntityModel;
 
-public class GiantBossEntityModel extends GiantEntityModel {
-    public GiantBossEntityModel(ModelPart modelPart) {
+public class GiantZombieBossEntityModel extends GiantEntityModel {
+    public GiantZombieBossEntityModel(ModelPart modelPart) {
         super(modelPart);
     }
 

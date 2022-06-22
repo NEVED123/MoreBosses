@@ -1,25 +1,19 @@
 package net.fabricmc.example;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.example.entities.GiantBossEntity;
+import net.fabricmc.example.entities.GiantZombieBossEntity;
 import net.fabricmc.example.entities.GiantPillagerBossEntity;
 import net.fabricmc.example.entities.TowerOfUndyingEntity;
 import net.fabricmc.example.entities.ZombieScarecrowEntity;
 import net.fabricmc.example.items.TowerOfUndying;
 import net.fabricmc.example.items.ZombieScarecrowItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.minecraft.block.Material;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.*;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MoreBosses implements ModInitializer {
 
@@ -34,9 +28,9 @@ public class MoreBosses implements ModInitializer {
 					.dimensions(EntityDimensions.fixed(.25F, .25F))
 					.build());
 
-	public static final EntityType<GiantBossEntity> GIANT_BOSS_ENTITY =
-			Registry.register(Registry.ENTITY_TYPE, new Identifier("more_bosses","giant_boss_entity"),
-			FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, GiantBossEntity::new)
+	public static final EntityType<GiantZombieBossEntity> GIANT_ZOMBIE_BOSS_ENTITY =
+			Registry.register(Registry.ENTITY_TYPE, new Identifier("more_bosses","giant_zombie_boss_entity"),
+			FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, GiantZombieBossEntity::new)
 					.dimensions(EntityDimensions.fixed(3F, 12F))
 					.build());
 
@@ -55,7 +49,7 @@ public class MoreBosses implements ModInitializer {
 
 		FabricDefaultAttributeRegistry.register(ZOMBIE_SCARECROW_ENTITY, ZombieScarecrowEntity.createLivingAttributes());
 		FabricDefaultAttributeRegistry.register(TOWER_OF_UNDYING_ENTITY, TowerOfUndyingEntity.createLivingAttributes());
-		FabricDefaultAttributeRegistry.register(GIANT_BOSS_ENTITY, GiantBossEntity.createGiantEntityAttributes());
+		FabricDefaultAttributeRegistry.register(GIANT_ZOMBIE_BOSS_ENTITY, GiantZombieBossEntity.createGiantEntityAttributes());
 		FabricDefaultAttributeRegistry.register(GIANT_PILLAGER_BOSS_ENTITY, GiantPillagerBossEntity.createGiantPillagerEntityAttributes());
 
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "zombie_scarecrow_item"), ZOMBIE_SCARECROW_ITEM);

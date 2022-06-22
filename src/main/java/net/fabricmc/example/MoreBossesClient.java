@@ -2,11 +2,11 @@ package net.fabricmc.example;
 
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.example.models.GiantBossEntityModel;
+import net.fabricmc.example.models.GiantZombieBossEntityModel;
 import net.fabricmc.example.models.GiantPillagerBossEntityModel;
 import net.fabricmc.example.models.TowerOfUndyingEntityModel;
 import net.fabricmc.example.models.ZombieScarecrowEntityModel;
-import net.fabricmc.example.renderers.GiantBossEntityRenderer;
+import net.fabricmc.example.renderers.GiantZombieBossEntityRenderer;
 import net.fabricmc.example.renderers.GiantPillagerBossEntityRenderer;
 import net.fabricmc.example.renderers.TowerOfUndyingRenderer;
 import net.fabricmc.example.renderers.ZombieScarecrowRenderer;
@@ -38,11 +38,11 @@ public class MoreBossesClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(MODEL_TOWER_OF_UNDYING_LAYER, TowerOfUndyingEntityModel::getTexturedModelData);
 
 
-        EntityRendererRegistry.INSTANCE.register(MoreBosses.GIANT_BOSS_ENTITY, (context) -> {
-            return new GiantBossEntityRenderer(context);
+        EntityRendererRegistry.INSTANCE.register(MoreBosses.GIANT_ZOMBIE_BOSS_ENTITY, (context) -> {
+            return new GiantZombieBossEntityRenderer(context);
         });
 
-        EntityModelLayerRegistry.registerModelLayer(MODEL_GIANT_BOSS_LAYER, GiantBossEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(MODEL_GIANT_BOSS_LAYER, GiantZombieBossEntityModel::getTexturedModelData);
 
         EntityRendererRegistry.INSTANCE.register(MoreBosses.GIANT_PILLAGER_BOSS_ENTITY, (context) -> {
             return new GiantPillagerBossEntityRenderer(context);

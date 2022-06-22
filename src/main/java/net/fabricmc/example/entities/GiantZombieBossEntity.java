@@ -1,19 +1,12 @@
 package net.fabricmc.example.entities;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityDimensions;
-import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
-import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
 import net.minecraft.entity.boss.ServerBossBar;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.GiantEntity;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -21,12 +14,11 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import org.lwjgl.system.Pointer;
 
-public class GiantBossEntity extends GiantEntity {
+public class GiantZombieBossEntity extends GiantEntity {
 
     private ServerBossBar bossBar;
-    public GiantBossEntity(EntityType<? extends GiantEntity> entityType, World world) {
+    public GiantZombieBossEntity(EntityType<? extends GiantEntity> entityType, World world) {
         super(entityType, world);
         bossBar = (ServerBossBar)(new ServerBossBar(new LiteralText("Giant"), BossBar.Color.PURPLE, BossBar.Style.PROGRESS)).setDarkenSky(true);
         this.setPersistent();
