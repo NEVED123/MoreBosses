@@ -19,10 +19,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.MoreBosses"
+      "net.fabricmc.more_bosses.MoreBosses"
     ],
     "client": [
-      "net.fabricmc.example.MoreBossesClient"
+      "net.fabricmc.more_bosses.MoreBossesClient"
     ]
   },
   "mixins": [
