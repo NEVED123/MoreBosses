@@ -1,6 +1,6 @@
-package net.fabricmc.more_bosses.models;
+package net.fabricmc.more_bosses.models.bosses;
 
-import net.fabricmc.more_bosses.entities.GiantZombieBossEntity;
+import net.fabricmc.more_bosses.entities.bosses.GiantZombieBossEntity;
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.model.TexturedModelData;

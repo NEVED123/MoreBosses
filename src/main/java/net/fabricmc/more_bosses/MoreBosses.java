@@ -1,8 +1,8 @@
 package net.fabricmc.more_bosses;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.more_bosses.entities.GiantZombieBossEntity;
-import net.fabricmc.more_bosses.entities.GiantPillagerBossEntity;
+import net.fabricmc.more_bosses.entities.bosses.GiantZombieBossEntity;
+import net.fabricmc.more_bosses.entities.bosses.GiantPillagerBossEntity;
 import net.fabricmc.more_bosses.entities.TowerOfUndyingEntity;
 import net.fabricmc.more_bosses.entities.ZombieScarecrowEntity;
 import net.fabricmc.more_bosses.items.TowerOfUndying;

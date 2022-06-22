@@ -1,5 +1,6 @@
-package net.fabricmc.more_bosses.entities;
+package net.fabricmc.more_bosses.entities.bosses;
 
+import net.fabricmc.more_bosses.entities.bosses.GiantBossEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;

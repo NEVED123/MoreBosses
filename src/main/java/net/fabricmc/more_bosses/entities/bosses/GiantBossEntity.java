@@ -1,4 +1,4 @@
-package net.fabricmc.more_bosses.entities;
+package net.fabricmc.more_bosses.entities.bosses;
 
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;

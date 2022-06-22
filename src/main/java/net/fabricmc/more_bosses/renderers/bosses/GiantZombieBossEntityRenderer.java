@@ -1,8 +1,8 @@
-package net.fabricmc.more_bosses.renderers;
+package net.fabricmc.more_bosses.renderers.bosses;
 
 import net.fabricmc.more_bosses.MoreBossesClient;
-import net.fabricmc.more_bosses.entities.GiantZombieBossEntity;
-import net.fabricmc.more_bosses.models.GiantZombieBossEntityModel;
+import net.fabricmc.more_bosses.entities.bosses.GiantZombieBossEntity;
+import net.fabricmc.more_bosses.models.bosses.GiantZombieBossEntityModel;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;

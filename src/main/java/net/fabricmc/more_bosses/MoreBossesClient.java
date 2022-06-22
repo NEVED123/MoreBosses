@@ -2,12 +2,12 @@ package net.fabricmc.more_bosses;
 
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.more_bosses.models.GiantZombieBossEntityModel;
-import net.fabricmc.more_bosses.models.GiantPillagerBossEntityModel;
+import net.fabricmc.more_bosses.models.bosses.GiantZombieBossEntityModel;
+import net.fabricmc.more_bosses.models.bosses.GiantPillagerBossEntityModel;
 import net.fabricmc.more_bosses.models.TowerOfUndyingEntityModel;
 import net.fabricmc.more_bosses.models.ZombieScarecrowEntityModel;
-import net.fabricmc.more_bosses.renderers.GiantZombieBossEntityRenderer;
-import net.fabricmc.more_bosses.renderers.GiantPillagerBossEntityRenderer;
+import net.fabricmc.more_bosses.renderers.bosses.GiantZombieBossEntityRenderer;
+import net.fabricmc.more_bosses.renderers.bosses.GiantPillagerBossEntityRenderer;
 import net.fabricmc.more_bosses.renderers.TowerOfUndyingRenderer;
 import net.fabricmc.more_bosses.renderers.ZombieScarecrowRenderer;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
