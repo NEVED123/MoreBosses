@@ -22,7 +22,7 @@ public class GiantPillagerBossEntity extends GiantBossEntity {
         super(entityType, world);
     }
 
-    public static DefaultAttributeContainer.Builder createGiantPillagerEntityAttributes() {
+    public static DefaultAttributeContainer.Builder createGiantPillagerBossEntityAttributes() {
         return createGiantBossEntityAttributes()
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 30.0)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 2)

@@ -31,7 +31,7 @@ public class GiantZombieBossEntity extends GiantBossEntity {
         this.targetSelector.add(1, new RevengeGoal(this, new Class[0]));
     }
 
-    public static DefaultAttributeContainer.Builder createGiantEntityAttributes() {
+    public static DefaultAttributeContainer.Builder createGiantZombieBossEntityAttributes() {
         return createGiantBossEntityAttributes()
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 30.0)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 2)
