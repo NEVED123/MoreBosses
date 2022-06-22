@@ -15,14 +15,10 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class GiantZombieBossEntity extends GiantEntity {
+public class GiantZombieBossEntity extends GiantBossEntity {
 
-    private ServerBossBar bossBar;
-    public GiantZombieBossEntity(EntityType<? extends GiantEntity> entityType, World world) {
+    public GiantZombieBossEntity(EntityType<? extends GiantBossEntity> entityType, World world) {
         super(entityType, world);
-        bossBar = (ServerBossBar)(new ServerBossBar(new LiteralText("Giant"), BossBar.Color.PURPLE, BossBar.Style.PROGRESS)).setDarkenSky(true);
-        this.setPersistent();
-        this.getNavigation().setCanSwim(true);
     }
 
     protected void initGoals(){
@@ -36,46 +32,10 @@ public class GiantZombieBossEntity extends GiantEntity {
     }
 
     public static DefaultAttributeContainer.Builder createGiantEntityAttributes() {
-        return DefaultAttributeContainer.builder()
+        return createGiantBossEntityAttributes()
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 30.0)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 100.0)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 2)
-                .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 5)
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 200)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1)
-                .add(EntityAttributes.GENERIC_ARMOR)
-                .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)
-                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.5);
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 200);
     }
-
-    public void onStartedTrackingBy(ServerPlayerEntity player){
-        super.onStartedTrackingBy(player);
-        bossBar.addPlayer(player);
-    }
-
-    public void onStoppedTrackingBy(ServerPlayerEntity player){
-        super.onStoppedTrackingBy(player);
-        bossBar.removePlayer(player);
-    }
-
-    public void mobTick(){
-        bossBar.setPercent(this.getHealth()/this.getMaxHealth());
-    }
-
-    public double getSwimHeight(){
-        return 6;
-    }
-
-    protected void swimUpward(TagKey<Fluid> fluid){
-        //allows Giant to get onto land from water
-        if(this.horizontalCollision){
-            Vec3d initialVelocity = this.getVelocity();
-            this.setVelocity(initialVelocity.x, 2, initialVelocity.y);
-        }
-        else{
-            super.swimUpward(fluid);
-        }
-    }
-
 
 }
