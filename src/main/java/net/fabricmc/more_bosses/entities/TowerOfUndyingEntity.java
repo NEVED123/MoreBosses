@@ -23,12 +23,13 @@ public class TowerOfUndyingEntity extends LivingEntity{
 
     private UUID ownerUuid;
     private int towerAge;
+    private int health = 5;
 
     public TowerOfUndyingEntity(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
         this.setNoGravity(true);
         towerAge = 0;
-        this.setHealth(5);
+        this.setHealth(health);
     }
 
     @Override

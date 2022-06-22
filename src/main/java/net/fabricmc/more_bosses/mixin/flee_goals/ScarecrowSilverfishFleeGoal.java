@@ -11,6 +11,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static net.fabricmc.more_bosses.entities.ZombieScarecrowEntity.FLEE_DISTANCE;
+
 @Mixin(SilverfishEntity.class)
 public class ScarecrowSilverfishFleeGoal extends MobEntity {
     public ScarecrowSilverfishFleeGoal(EntityType<? extends MobEntity> entityType, World world){
@@ -19,7 +21,7 @@ public class ScarecrowSilverfishFleeGoal extends MobEntity {
     @Inject(at = @At("HEAD"), method = "initGoals()V")
     private void init(CallbackInfo info)  {
         this.goalSelector.add(3, new FleeEntityGoal(((SilverfishEntity)(Object)this),
-                ZombieScarecrowEntity.class, 100.0F, 1.0, 1.2));
+                ZombieScarecrowEntity.class, FLEE_DISTANCE, 1.0, 1.2));
 
     }
 
