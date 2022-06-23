@@ -6,10 +6,11 @@ import net.fabricmc.more_bosses.models.bosses.GiantPillagerBossEntityModel;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
-public class GiantPillagerBossEntityRenderer extends MobEntityRenderer<GiantPillagerBossEntity, BipedEntityModel<GiantPillagerBossEntity>> {
+public class GiantPillagerBossEntityRenderer extends MobEntityRenderer<GiantPillagerBossEntity, SinglePartEntityModel<GiantPillagerBossEntity>> {
 
     private final float scale = 6;
     public GiantPillagerBossEntityRenderer(EntityRendererFactory.Context context) {
