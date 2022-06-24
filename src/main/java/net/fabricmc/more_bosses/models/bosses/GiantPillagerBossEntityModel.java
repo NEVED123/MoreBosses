@@ -3,6 +3,7 @@ package net.fabricmc.more_bosses.models.bosses;
 import net.fabricmc.more_bosses.entities.bosses.GiantPillagerBossEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.AbstractZombieModel;
+import net.minecraft.client.render.entity.model.CrossbowPosing;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.math.MathHelper;
 
@@ -54,32 +55,17 @@ public class GiantPillagerBossEntityModel extends SinglePartEntityModel<GiantPil
     public void setAngles(GiantPillagerBossEntity entity, float f, float g, float h, float i, float j) {
         this.head.yaw = i * 0.017453292F;
         this.head.pitch = j * 0.017453292F;
-        if (this.riding) {
-            this.rightArm.pitch = -0.62831855F;
-            this.rightArm.yaw = 0.0F;
-            this.rightArm.roll = 0.0F;
-            this.leftArm.pitch = -0.62831855F;
-            this.leftArm.yaw = 0.0F;
-            this.leftArm.roll = 0.0F;
-            this.rightLeg.pitch = -1.4137167F;
-            this.rightLeg.yaw = 0.31415927F;
-            this.rightLeg.roll = 0.07853982F;
-            this.leftLeg.pitch = -1.4137167F;
-            this.leftLeg.yaw = -0.31415927F;
-            this.leftLeg.roll = -0.07853982F;
-        } else {
-            this.rightArm.pitch = MathHelper.cos(f * 0.6662F + 3.1415927F) * 2.0F * g * 0.5F;
-            this.rightArm.yaw = 0.0F;
-            this.rightArm.roll = 0.0F;
-            this.leftArm.pitch = MathHelper.cos(f * 0.6662F) * 2.0F * g * 0.5F;
-            this.leftArm.yaw = 0.0F;
-            this.leftArm.roll = 0.0F;
-            this.rightLeg.pitch = MathHelper.cos(f * 0.6662F) * 1.4F * g * 0.5F;
-            this.rightLeg.yaw = 0.0F;
-            this.rightLeg.roll = 0.0F;
-            this.leftLeg.pitch = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * g * 0.5F;
-            this.leftLeg.yaw = 0.0F;
-            this.leftLeg.roll = 0.0F;
-        }
+        this.rightArm.pitch = MathHelper.cos(f * 0.6662F + 3.1415927F) * 2.0F * g * 0.5F;
+        this.rightArm.yaw = 0.0F;
+        this.rightArm.roll = 0.0F;
+        this.leftArm.pitch = MathHelper.cos(f * 0.6662F) * 2.0F * g * 0.5F;
+        this.leftArm.yaw = 0.0F;
+        this.leftArm.roll = 0.0F;
+        this.rightLeg.pitch = MathHelper.cos(f * 0.6662F) * 1.4F * g * 0.5F;
+        this.rightLeg.yaw = 0.0F;
+        this.rightLeg.roll = 0.0F;
+        this.leftLeg.pitch = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * g * 0.5F;
+        this.leftLeg.yaw = 0.0F;
+        this.leftLeg.roll = 0.0F;
     }
 }
