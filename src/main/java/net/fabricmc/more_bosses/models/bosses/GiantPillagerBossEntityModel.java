@@ -4,10 +4,13 @@ import net.fabricmc.more_bosses.entities.bosses.GiantPillagerBossEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.AbstractZombieModel;
 import net.minecraft.client.render.entity.model.CrossbowPosing;
+import net.minecraft.client.render.entity.model.ModelWithArms;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Arm;
 import net.minecraft.util.math.MathHelper;
 
-public class GiantPillagerBossEntityModel extends SinglePartEntityModel<GiantPillagerBossEntity> {
+public class GiantPillagerBossEntityModel extends SinglePartEntityModel<GiantPillagerBossEntity> implements ModelWithArms{
 
     private final ModelPart root;
     private final ModelPart head;
@@ -68,4 +71,14 @@ public class GiantPillagerBossEntityModel extends SinglePartEntityModel<GiantPil
         this.leftLeg.yaw = 0.0F;
         this.leftLeg.roll = 0.0F;
     }
+
+    @Override
+    public void setArmAngle(Arm arm, MatrixStack matrices) {
+        this.getArm(arm).rotate(matrices);
+    }
+
+    protected ModelPart getArm(Arm arm) {
+        return arm == Arm.LEFT ? this.leftArm : this.rightArm;
+    }
+
 }

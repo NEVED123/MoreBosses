@@ -25,6 +25,7 @@ public class GiantPillagerBossEntity extends GiantBossEntity{
 
     public GiantPillagerBossEntity(EntityType<? extends GiantBossEntity> entityType, World world) {
         super(entityType, world);
+        this.equipStack(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_AXE));
     }
 
     public static DefaultAttributeContainer.Builder createGiantPillagerBossEntityAttributes() {

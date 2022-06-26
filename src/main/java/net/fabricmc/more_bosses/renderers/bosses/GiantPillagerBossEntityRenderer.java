@@ -3,8 +3,12 @@ package net.fabricmc.more_bosses.renderers.bosses;
 import net.fabricmc.more_bosses.MoreBossesClient;
 import net.fabricmc.more_bosses.entities.bosses.GiantPillagerBossEntity;
 import net.fabricmc.more_bosses.models.bosses.GiantPillagerBossEntityModel;
+import net.minecraft.client.render.entity.BipedEntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.feature.FeatureRendererContext;
+import net.minecraft.client.render.entity.feature.HeldItemFeatureRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
@@ -15,6 +19,7 @@ public class GiantPillagerBossEntityRenderer extends MobEntityRenderer<GiantPill
     private final float scale = 6;
     public GiantPillagerBossEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new GiantPillagerBossEntityModel(context.getPart(MoreBossesClient.MODEL_GIANT_PILlAGER_LAYER)), 2);
+        this.addFeature(new HeldItemFeatureRenderer(this));
     }
 
     public Identifier getTexture(GiantPillagerBossEntity entity){
@@ -24,4 +29,5 @@ public class GiantPillagerBossEntityRenderer extends MobEntityRenderer<GiantPill
     protected void scale(GiantPillagerBossEntity entity, MatrixStack matrixStack, float f) {
         matrixStack.scale(this.scale, this.scale, this.scale);
     }
+
 }
