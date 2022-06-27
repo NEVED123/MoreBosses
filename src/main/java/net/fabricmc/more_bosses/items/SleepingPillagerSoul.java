@@ -32,7 +32,7 @@ public class SleepingPillagerSoul extends Item {
                 ItemStack stack = context.getStack();
                 stack.decrement(1);
             }
-            return ActionResult.CONSUME;
+            return ActionResult.SUCCESS;
         }
 
         return ActionResult.FAIL;
