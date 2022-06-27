@@ -43,7 +43,6 @@ public class MoreBosses implements ModInitializer {
 	public static final Item ZOMBIE_SCARECROW_ITEM = new ZombieScarecrowItem(new FabricItemSettings().group(ItemGroup.MISC));
 	public static final Item TOWER_OF_UNDYING_ITEM = new TowerOfUndying(new FabricItemSettings().group(ItemGroup.MISC));
 
-	public static final ArmorItem SWIMMERS_BOOTS = new ArmorItem(ArmorMaterials.DIAMOND, EquipmentSlot.FEET, new FabricItemSettings().group(ItemGroup.COMBAT));
 	@Override
 	public void onInitialize() {
 
@@ -54,6 +53,5 @@ public class MoreBosses implements ModInitializer {
 
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "zombie_scarecrow_item"), ZOMBIE_SCARECROW_ITEM);
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "tower_of_undying_item"), TOWER_OF_UNDYING_ITEM);
-		Registry.register(Registry.ITEM, new Identifier("more_bosses", "swimmers_boots"), SWIMMERS_BOOTS);
 	}
 }
