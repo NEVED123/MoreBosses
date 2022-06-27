@@ -5,6 +5,7 @@ import net.fabricmc.more_bosses.entities.bosses.GiantZombieBossEntity;
 import net.fabricmc.more_bosses.entities.bosses.GiantPillagerBossEntity;
 import net.fabricmc.more_bosses.entities.TowerOfUndyingEntity;
 import net.fabricmc.more_bosses.entities.ZombieScarecrowEntity;
+import net.fabricmc.more_bosses.items.SleepingPillagerSoul;
 import net.fabricmc.more_bosses.items.TowerOfUndying;
 import net.fabricmc.more_bosses.items.ZombieScarecrowItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -43,6 +44,8 @@ public class MoreBosses implements ModInitializer {
 	public static final Item ZOMBIE_SCARECROW_ITEM = new ZombieScarecrowItem(new FabricItemSettings().group(ItemGroup.MISC));
 	public static final Item TOWER_OF_UNDYING_ITEM = new TowerOfUndying(new FabricItemSettings().group(ItemGroup.MISC));
 
+	public static final Item SLEEPING_PILLAGER_SOUL = new SleepingPillagerSoul(new FabricItemSettings().group(ItemGroup.MISC));
+
 	@Override
 	public void onInitialize() {
 
@@ -53,5 +56,7 @@ public class MoreBosses implements ModInitializer {
 
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "zombie_scarecrow_item"), ZOMBIE_SCARECROW_ITEM);
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "tower_of_undying_item"), TOWER_OF_UNDYING_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("more_bosses", "sleeping_pillager_soul"), SLEEPING_PILLAGER_SOUL);
+
 	}
 }

@@ -23,7 +23,7 @@ public class TowerOfUndying extends Item {
         if(!world.isClient()){
             ServerWorld serverWorld = (ServerWorld)world;
             TowerOfUndyingEntity towerOfUndyingEntity = MoreBosses.TOWER_OF_UNDYING_ENTITY.create(serverWorld, null, null, user, user.getBlockPos(), SpawnReason.SPAWN_EGG, true, false);
-            towerOfUndyingEntity.setOwnerUuid(user.getUuid());
+            towerOfUndyingEntity.setOwnerUuid(user.getUuid()); //so it knows who to give hero potion effect to
             serverWorld.spawnEntity(towerOfUndyingEntity);
             itemStack.decrement(1);
             return TypedActionResult.success(itemStack, true);
