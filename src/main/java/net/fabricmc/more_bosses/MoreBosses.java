@@ -69,7 +69,6 @@ public class MoreBosses implements ModInitializer {
 
 
 		LootTableLoadingCallback.EVENT.register((resourceManager, manager, id, supplier, setter) -> {
-			System.out.println(id);
 			if(MANSION_LOOT_TABLE.equals(id)){
 				LootPool.Builder poolBuilder = LootPool.builder()
 								.with(ItemEntry.builder(SLEEPING_PILLAGER_SOUL));
