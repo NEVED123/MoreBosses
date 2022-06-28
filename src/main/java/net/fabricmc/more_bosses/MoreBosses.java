@@ -1,6 +1,7 @@
 package net.fabricmc.more_bosses;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.fabricmc.more_bosses.entities.bosses.GiantZombieBossEntity;
 import net.fabricmc.more_bosses.entities.bosses.GiantPillagerBossEntity;
 import net.fabricmc.more_bosses.entities.TowerOfUndyingEntity;
@@ -11,10 +12,16 @@ import net.fabricmc.more_bosses.items.ZombieScarecrowItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.item.*;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.structure.WoodlandMansionGenerator;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.world.gen.feature.WoodlandMansionFeature;
 
 public class MoreBosses implements ModInitializer {
 
@@ -46,6 +53,8 @@ public class MoreBosses implements ModInitializer {
 
 	public static final Item SLEEPING_PILLAGER_SOUL = new SleepingPillagerSoul(new FabricItemSettings().group(ItemGroup.MISC));
 
+	private static final Identifier MANSION_LOOT_TABLE = new Identifier(Identifier.DEFAULT_NAMESPACE, "chests/woodland_mansion");
+	//minecraft\loot_tables\chests\woodland_mansion.json
 	@Override
 	public void onInitialize() {
 
@@ -58,5 +67,15 @@ public class MoreBosses implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "tower_of_undying_item"), TOWER_OF_UNDYING_ITEM);
 		Registry.register(Registry.ITEM, new Identifier("more_bosses", "sleeping_pillager_soul"), SLEEPING_PILLAGER_SOUL);
 
+
+		LootTableLoadingCallback.EVENT.register((resourceManager, manager, id, supplier, setter) -> {
+			System.out.println(id);
+			if(MANSION_LOOT_TABLE.equals(id)){
+				LootPool.Builder poolBuilder = LootPool.builder()
+								.with(ItemEntry.builder(SLEEPING_PILLAGER_SOUL));
+
+				supplier.pool(poolBuilder);
+			}
+		});
 	}
 }
