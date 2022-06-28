@@ -28,6 +28,11 @@
                     ],
                     "name": "minecraft:emerald_block"
                 }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:killed_by_player"
+                }
             ]
         },
         {
@@ -37,6 +42,11 @@
                 {
                     "type": "minecraft:item",
                     "name": "minecraft:totem_of_undying"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:killed_by_player"
                 }
             ]
         },
@@ -48,6 +58,11 @@
                     "type": "minecraft:item",
                     "name": "more_bosses:tower_of_undying_item"
                 }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:killed_by_player"
+                }
             ]
         },
         {
@@ -55,7 +70,7 @@
             "bonus_rolls": 0.0,
             "entries": [
                 {
-                    "type":"minecraft:item",
+                    "type": "minecraft:item",
                     "functions": [
                         {
                             "function": "minecraft:set_name",
@@ -77,6 +92,11 @@
                         }
                     ],
                     "name": "minecraft:crossbow"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:killed_by_player"
                 }
             ]
         }
