@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.boss.BossBar;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 
@@ -12,6 +13,7 @@ public class GiantZombieBossEntity extends GiantBossEntity {
 
     public GiantZombieBossEntity(EntityType<? extends GiantBossEntity> entityType, World world) {
         super(entityType, world);
+        this.initializeBossBar("Giant Zombie", BossBar.Color.PURPLE, BossBar.Style.PROGRESS, true);
     }
 
     protected void initGoals(){

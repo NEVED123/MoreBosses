@@ -23,7 +23,6 @@ public abstract class GiantBossEntity extends HostileEntity {
 
     protected GiantBossEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
-        bossBar = (ServerBossBar)(new ServerBossBar(new LiteralText("Giant"), BossBar.Color.PURPLE, BossBar.Style.PROGRESS)).setDarkenSky(true);
         this.setPersistent();
         this.getNavigation().setCanSwim(true);
     }
@@ -86,7 +85,11 @@ public abstract class GiantBossEntity extends HostileEntity {
         }
     }
 
-    //FIGURE OUT HOW TO GET DISPLAY NAME
+    //Call in constructor of subclass to get a bossbar
+    protected void initializeBossBar(String displayName, BossBar.Color color, BossBar.Style style, boolean darkenSky){
+        bossBar = (ServerBossBar)(new ServerBossBar(new LiteralText(displayName), color, style)).setDarkenSky(darkenSky);
+    }
+
 
 
 

@@ -4,6 +4,7 @@ import net.fabricmc.more_bosses.entities.bosses.GiantBossEntity;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.boss.BossBar;
 import net.minecraft.entity.mob.RavagerEntity;
 import net.minecraft.entity.mob.VexEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -26,6 +27,7 @@ public class GiantPillagerBossEntity extends GiantBossEntity{
     public GiantPillagerBossEntity(EntityType<? extends GiantBossEntity> entityType, World world) {
         super(entityType, world);
         this.equipStack(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_AXE));
+        this.initializeBossBar("Giant Pillager", BossBar.Color.RED, BossBar.Style.PROGRESS, false);
     }
 
     public static DefaultAttributeContainer.Builder createGiantPillagerBossEntityAttributes() {
