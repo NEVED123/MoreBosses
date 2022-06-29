@@ -2,6 +2,8 @@ package net.fabricmc.more_bosses.mixin.flee_goals;
 
 import net.fabricmc.more_bosses.entities.ZombieScarecrowEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.goal.ActiveTargetGoal;
+import net.minecraft.entity.ai.goal.AttackGoal;
 import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.ZombieEntity;
@@ -20,9 +22,8 @@ public class ScarecrowZombieFleeGoal extends MobEntity{
 	}
 	@Inject(at = @At("HEAD"), method = "initGoals()V")
 	private void init(CallbackInfo info)  {
-		this.goalSelector.add(3, new FleeEntityGoal(((ZombieEntity)(Object)this),
+		this.goalSelector.add(1, new FleeEntityGoal(((ZombieEntity)(Object)this),
 				ZombieScarecrowEntity.class, FLEE_DISTANCE, 1.0, 1.2));
-
 	}
 
 }

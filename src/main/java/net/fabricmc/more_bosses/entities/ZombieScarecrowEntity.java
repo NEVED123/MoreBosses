@@ -19,7 +19,7 @@ import static net.fabricmc.more_bosses.MoreBosses.ZOMBIE_SCARECROW_ITEM;
 
 public class ZombieScarecrowEntity extends ArmorStandEntity {
 
-    public final static float FLEE_DISTANCE = 100.0F;
+    public final static float FLEE_DISTANCE = 50.0F;
     public ZombieScarecrowEntity(EntityType<? extends ArmorStandEntity> entityType, World world){
         super(entityType, world);
     }

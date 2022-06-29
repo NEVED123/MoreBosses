@@ -22,7 +22,7 @@ public class ScarecrowRaiderFleeGoal extends MobEntity {
     }
     @Inject(at = @At("HEAD"), method = "initGoals()V")
     private void init(CallbackInfo info)  {
-        this.goalSelector.add(3, new FleeEntityGoal(((RaiderEntity)(Object)this),
+        this.goalSelector.add(1, new FleeEntityGoal(((RaiderEntity)(Object)this),
                 ZombieScarecrowEntity.class, FLEE_DISTANCE, 1.0, 1.2));
         this.goalSelector.add(6, new ActiveTargetGoal(((RaiderEntity)(Object)this),
                 TowerOfUndyingEntity.class, false));
