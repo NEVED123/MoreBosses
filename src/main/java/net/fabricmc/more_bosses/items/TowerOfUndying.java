@@ -6,9 +6,13 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsageContext;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 public class TowerOfUndying extends Item {
@@ -17,20 +21,25 @@ public class TowerOfUndying extends Item {
         super(settings);
     }
 
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
 
-        ItemStack itemStack = user.getStackInHand(hand);
-        if(!world.isClient()){
+    public ActionResult useOnBlock(ItemUsageContext context) {
+        World world = context.getWorld();
+        if(!world.isClient && context.getSide() == Direction.UP){
+            PlayerEntity player = context.getPlayer();
+            BlockPos placedPos = context.getBlockPos();
             ServerWorld serverWorld = (ServerWorld)world;
-            TowerOfUndyingEntity towerOfUndyingEntity = MoreBosses.TOWER_OF_UNDYING_ENTITY.create(serverWorld, null, null, user, user.getBlockPos(), SpawnReason.SPAWN_EGG, true, false);
-            towerOfUndyingEntity.setOwnerUuid(user.getUuid()); //so it knows who to give hero potion effect to
+            TowerOfUndyingEntity towerOfUndyingEntity = MoreBosses.TOWER_OF_UNDYING_ENTITY
+                    .create(serverWorld, null, null, null,
+                            placedPos, SpawnReason.SPAWN_EGG, true, false);
             serverWorld.spawnEntity(towerOfUndyingEntity);
-            itemStack.decrement(1);
-            return TypedActionResult.success(itemStack, true);
+            if(!player.isCreative()){
+                ItemStack stack = context.getStack();
+                stack.decrement(1);
+            }
+            return ActionResult.SUCCESS;
         }
 
-        return TypedActionResult.fail(itemStack);
-
+        return ActionResult.FAIL;
     }
 
 }
