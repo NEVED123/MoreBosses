@@ -10,6 +10,8 @@ import net.minecraft.entity.raid.RaiderEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Arm;
 import net.minecraft.village.raid.Raid;
@@ -21,6 +23,10 @@ import java.util.UUID;
 
 public class TowerOfUndyingEntity extends LivingEntity{
 
+    //Sounds:
+    //place: block.anvil.land
+    //rotating: none?
+    //dying: xp
     private UUID ownerUuid;
     private int towerAge;
     private int health = 5;
@@ -84,8 +90,13 @@ public class TowerOfUndyingEntity extends LivingEntity{
                         raider.kill();
                     }
                     if(this.getOwner() != null){
-                        this.getOwner().addStatusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 48000, 1, false, false, true));
-                        this.getOwner().incrementStat(Stats.RAID_WIN);
+                        PlayerEntity owner = this.getOwner();
+                        double x = owner.getBlockX();
+                        double y = owner.getBlockY();
+                        double z = owner.getBlockZ();
+                        owner.addStatusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 48000, 1, false, false, true));
+                        owner.incrementStat(Stats.RAID_WIN);
+                        this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 10F, 1.0F);
                     }
 
                 }

@@ -8,6 +8,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -33,6 +35,7 @@ public class TowerOfUndying extends Item {
                             placedPos, SpawnReason.SPAWN_EGG, true, false);
             towerOfUndyingEntity.setOwnerUuid(player.getUuid());
             serverWorld.spawnEntity(towerOfUndyingEntity);
+            world.playSound((PlayerEntity)null, placedPos.getX(), placedPos.getY(), placedPos.getZ(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 1.0F, 1.0F);
             if(!player.isCreative()){
                 ItemStack stack = context.getStack();
                 stack.decrement(1);
