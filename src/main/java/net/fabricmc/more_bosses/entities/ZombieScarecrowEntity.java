@@ -2,7 +2,10 @@ package net.fabricmc.more_bosses.entities;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,27 +15,31 @@ import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Arm;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
+import java.util.ArrayList;
+
 import static net.fabricmc.more_bosses.MoreBosses.ZOMBIE_SCARECROW_ITEM;
 
-public class ZombieScarecrowEntity extends ArmorStandEntity {
+public class ZombieScarecrowEntity extends LivingEntity {
 
+    public long lastHitTime;
     public final static float FLEE_DISTANCE = 50.0F;
-    public ZombieScarecrowEntity(EntityType<? extends ArmorStandEntity> entityType, World world){
+    public ZombieScarecrowEntity(EntityType<? extends LivingEntity> entityType, World world){
         super(entityType, world);
     }
 
     public boolean damage(DamageSource source, float amount) {
         if (!this.world.isClient && !this.isRemoved()) {
             if (DamageSource.OUT_OF_WORLD.equals(source)) {
-                this.kill();
+                this.remove(RemovalReason.DISCARDED);
                 return false;
-            } else if (!this.isInvulnerableTo(source) && !this.isMarker()) {
+            } else if (!this.isInvulnerableTo(source)) {
                 if (source.isExplosive()) {
                     this.onBreak(source);
-                    this.kill();
+                    this.remove(RemovalReason.DISCARDED);
                     return false;
                 } else if (DamageSource.IN_FIRE.equals(source)) {
                     if (this.isOnFire()) {
@@ -56,7 +63,7 @@ public class ZombieScarecrowEntity extends ArmorStandEntity {
                     } else if (source.isSourceCreativePlayer()) {
                         this.playBreakSound();
                         this.spawnBreakParticles();
-                        this.kill();
+                        this.remove(RemovalReason.DISCARDED);
                         return bl2;
                     } else {
                         long l = this.world.getTime();
@@ -67,7 +74,7 @@ public class ZombieScarecrowEntity extends ArmorStandEntity {
                         } else {
                             this.breakAndDropItem(source);
                             this.spawnBreakParticles();
-                            this.kill();
+                            this.remove(RemovalReason.DISCARDED);
                         }
 
                         return true;
@@ -79,6 +86,26 @@ public class ZombieScarecrowEntity extends ArmorStandEntity {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public Iterable<ItemStack> getArmorItems() {
+        return new ArrayList<ItemStack>();
+    }
+
+    @Override
+    public ItemStack getEquippedStack(EquipmentSlot slot) {
+        return ItemStack.EMPTY;
+    }
+
+    @Override
+    public void equipStack(EquipmentSlot slot, ItemStack stack) {
+
+    }
+
+    @Override
+    public Arm getMainArm() {
+        return null;
     }
 
     private void breakAndDropItem(DamageSource damageSource) {
@@ -97,7 +124,7 @@ public class ZombieScarecrowEntity extends ArmorStandEntity {
         f -= amount;
         if (f <= 0.5F) {
             this.onBreak(damageSource);
-            this.kill();
+            this.remove(RemovalReason.DISCARDED);
         } else {
             this.setHealth(f);
             this.emitGameEvent(GameEvent.ENTITY_DAMAGED, damageSource.getAttacker());
@@ -116,6 +143,23 @@ public class ZombieScarecrowEntity extends ArmorStandEntity {
         this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ARMOR_STAND_BREAK, this.getSoundCategory(), 1.0F, 1.0F);
     }
 
+    public void handleStatus(byte status) {
+        if (status == 32) {
+            if (this.world.isClient) {
+                this.world.playSound(this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ARMOR_STAND_HIT, this.getSoundCategory(), 0.3F, 1.0F, false);
+                this.lastHitTime = this.world.getTime();
+            }
+        } else {
+            super.handleStatus(status);
+        }
+    }
+
+    public boolean isPushable() {
+        return false;
+    }
+
+    protected void pushAway(Entity entity) {
+    }
 
 
 
