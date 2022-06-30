@@ -51,7 +51,7 @@ public class GiantZombieBossEntity extends GiantBossEntity {
     }
 
     public SoundCategory getSoundCategory(){
-        return SoundCategory.AMBIENT;
+        return SoundCategory.HOSTILE;
     }
 
     public SoundEvent getHurtSound(DamageSource source){
@@ -60,5 +60,6 @@ public class GiantZombieBossEntity extends GiantBossEntity {
 
     public void onDeath(DamageSource source){
         this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ZOMBIE_DEATH, SoundCategory.HOSTILE, 10F, .5F);
+        super.onDeath(source);
     }
 }

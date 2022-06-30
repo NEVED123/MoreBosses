@@ -5,6 +5,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.RavagerEntity;
 import net.minecraft.entity.mob.VexEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,6 +13,9 @@ import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
@@ -81,6 +85,32 @@ public class GiantPillagerBossEntity extends GiantBossEntity{
         }
 
         return new BlockPos(spawnX, spawnY, spawnZ);
+    }
+
+    @Override
+    public SoundEvent getAmbientSound(){
+        return SoundEvents.ENTITY_PILLAGER_AMBIENT;
+    }
+
+    protected float getSoundVolume(){
+        return 1.0F;
+    }
+
+    public float getSoundPitch(){
+        return .5F;
+    }
+
+    public SoundCategory getSoundCategory(){
+        return SoundCategory.HOSTILE;
+    }
+
+    public SoundEvent getHurtSound(DamageSource source){
+        return SoundEvents.ENTITY_PILLAGER_HURT;
+    }
+
+    public void onDeath(DamageSource source){
+        this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PILLAGER_DEATH, SoundCategory.HOSTILE, 10F, .5F);
+        super.onDeath(source);
     }
 
     private enum Reinforcement{
