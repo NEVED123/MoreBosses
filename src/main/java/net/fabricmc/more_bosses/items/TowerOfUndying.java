@@ -31,6 +31,7 @@ public class TowerOfUndying extends Item {
             TowerOfUndyingEntity towerOfUndyingEntity = MoreBosses.TOWER_OF_UNDYING_ENTITY
                     .create(serverWorld, null, null, null,
                             placedPos, SpawnReason.SPAWN_EGG, true, false);
+            towerOfUndyingEntity.setOwnerUuid(player.getUuid());
             serverWorld.spawnEntity(towerOfUndyingEntity);
             if(!player.isCreative()){
                 ItemStack stack = context.getStack();
