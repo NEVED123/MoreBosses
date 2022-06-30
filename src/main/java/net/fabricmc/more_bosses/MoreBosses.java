@@ -33,7 +33,7 @@ public class MoreBosses implements ModInitializer {
 	public static final EntityType<TowerOfUndyingEntity> TOWER_OF_UNDYING_ENTITY =
 			Registry.register(Registry.ENTITY_TYPE, new Identifier("more_bosses","tower_of_undying"),
 			FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, TowerOfUndyingEntity::new)
-					.dimensions(EntityDimensions.fixed(.25F, .25F))
+					.dimensions(EntityDimensions.fixed(.25F, 1.0F))
 					.build());
 
 	public static final EntityType<GiantZombieBossEntity> GIANT_ZOMBIE_BOSS_ENTITY =
