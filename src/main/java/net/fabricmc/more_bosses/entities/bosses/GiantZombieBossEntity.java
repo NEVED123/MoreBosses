@@ -6,7 +6,11 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 
 public class GiantZombieBossEntity extends GiantBossEntity {
@@ -33,4 +37,28 @@ public class GiantZombieBossEntity extends GiantBossEntity {
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 200);
     }
 
+    @Override
+    public SoundEvent getAmbientSound(){
+        return SoundEvents.ENTITY_ZOMBIE_AMBIENT;
+    }
+
+    protected float getSoundVolume(){
+        return 1.0F;
+    }
+
+    public float getSoundPitch(){
+        return .5F;
+    }
+
+    public SoundCategory getSoundCategory(){
+        return SoundCategory.AMBIENT;
+    }
+
+    public SoundEvent getHurtSound(DamageSource source){
+        return SoundEvents.ENTITY_ZOMBIE_HURT;
+    }
+
+    public void onDeath(DamageSource source){
+        this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ZOMBIE_DEATH, SoundCategory.HOSTILE, 10F, .5F);
+    }
 }
