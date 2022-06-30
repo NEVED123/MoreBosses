@@ -1,5 +1,6 @@
 {
   "item.more_bosses.zombie_scarecrow_item": "Zombie Scarecrow",
   "entity.more_bosses.zombie_scarecrow": "Zombie Scarecrow",
-  "item.more_bosses.tower_of_undying_item": "Tower of Undying"
+  "item.more_bosses.tower_of_undying_item": "Tower of Undying",
+  "entity.more_bosses.tower_of_undying": "Tower of Undying"
 }
