@@ -23,7 +23,6 @@ public class TowerOfUndying extends Item {
         super(settings);
     }
 
-
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
         if(!world.isClient && context.getSide() == Direction.UP){
@@ -46,4 +45,7 @@ public class TowerOfUndying extends Item {
         return ActionResult.FAIL;
     }
 
+    public boolean hasGlint(ItemStack stack) {
+        return true;
+    }
 }
