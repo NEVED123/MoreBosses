@@ -64,4 +64,9 @@ public class GiantZombieBossEntity extends GiantBossEntity {
         this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ZOMBIE_DEATH, SoundCategory.HOSTILE, 10F, .5F);
         super.onDeath(source);
     }
+
+    @Override
+    protected int getXpToDrop(PlayerEntity player) {
+        return 7500;
+    }
 }

@@ -122,6 +122,11 @@ public class GiantPillagerBossEntity extends GiantBossEntity{
         return new ItemStack(SLEEPING_PILLAGER_SOUL);
     }
 
+    @Override
+    protected int getXpToDrop(PlayerEntity player) {
+        return 10000;
+    }
+
     private enum Reinforcement{
         VEX, RAVAGER
     }
