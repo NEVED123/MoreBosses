@@ -1,5 +1,6 @@
 package net.fabricmc.more_bosses.entities;
 
+import net.fabricmc.more_bosses.MoreBosses;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -161,7 +162,9 @@ public class ZombieScarecrowEntity extends LivingEntity {
     protected void pushAway(Entity entity) {
     }
 
-
+    public ItemStack getPickBlockStack(){
+        return new ItemStack(ZOMBIE_SCARECROW_ITEM);
+    }
 
 }
 

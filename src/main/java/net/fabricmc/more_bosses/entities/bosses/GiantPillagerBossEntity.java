@@ -24,6 +24,9 @@ import net.minecraft.world.World;
 import java.sql.SQLOutput;
 import java.util.Random;
 
+import static net.fabricmc.more_bosses.MoreBosses.SLEEPING_PILLAGER_SOUL;
+import static net.fabricmc.more_bosses.MoreBosses.ZOMBIE_SCARECROW_ITEM;
+
 public class GiantPillagerBossEntity extends GiantBossEntity{
 
     Random random = new Random();
@@ -111,6 +114,10 @@ public class GiantPillagerBossEntity extends GiantBossEntity{
     public void onDeath(DamageSource source){
         this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PILLAGER_DEATH, SoundCategory.HOSTILE, 10F, .5F);
         super.onDeath(source);
+    }
+
+    public ItemStack getPickBlockStack(){
+        return new ItemStack(SLEEPING_PILLAGER_SOUL);
     }
 
     private enum Reinforcement{

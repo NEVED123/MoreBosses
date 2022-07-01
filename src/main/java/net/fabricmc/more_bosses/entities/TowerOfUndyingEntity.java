@@ -21,6 +21,8 @@ import net.minecraft.world.explosion.Explosion;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import static net.fabricmc.more_bosses.MoreBosses.TOWER_OF_UNDYING_ITEM;
+
 public class TowerOfUndyingEntity extends LivingEntity{
 
     //Sounds:
@@ -137,7 +139,7 @@ public class TowerOfUndyingEntity extends LivingEntity{
     }
 
     public ItemStack getPickBlockStack(){
-        return new ItemStack(MoreBosses.TOWER_OF_UNDYING_ITEM);
+        return new ItemStack(TOWER_OF_UNDYING_ITEM);
     }
 
 
