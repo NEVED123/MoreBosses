@@ -6,18 +6,20 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
+import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.LiteralText;
 import net.minecraft.world.World;
 
 public class GiantZombieBossEntity extends GiantBossEntity {
 
     public GiantZombieBossEntity(EntityType<? extends GiantBossEntity> entityType, World world) {
         super(entityType, world);
-        this.initializeBossBar("Giant Zombie", BossBar.Color.PURPLE, BossBar.Style.PROGRESS, true);
+        bossBar = (ServerBossBar)(new ServerBossBar(this.getDisplayName(), BossBar.Color.PURPLE, BossBar.Style.PROGRESS)).setDarkenSky(true);
     }
 
     protected void initGoals(){

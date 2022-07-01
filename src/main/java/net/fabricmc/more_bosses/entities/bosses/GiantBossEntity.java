@@ -85,12 +85,4 @@ public abstract class GiantBossEntity extends HostileEntity {
         }
     }
 
-    //Call in constructor of subclass to get a bossbar
-    protected void initializeBossBar(String displayName, BossBar.Color color, BossBar.Style style, boolean darkenSky){
-        bossBar = (ServerBossBar)(new ServerBossBar(new LiteralText(displayName), color, style)).setDarkenSky(darkenSky);
-    }
-
-
-
-
 }

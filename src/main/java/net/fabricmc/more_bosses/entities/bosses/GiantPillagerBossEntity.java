@@ -5,6 +5,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
+import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.RavagerEntity;
 import net.minecraft.entity.mob.VexEntity;
@@ -16,6 +17,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.LiteralText;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
@@ -34,7 +36,7 @@ public class GiantPillagerBossEntity extends GiantBossEntity{
     public GiantPillagerBossEntity(EntityType<? extends GiantBossEntity> entityType, World world) {
         super(entityType, world);
         this.equipStack(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_AXE));
-        this.initializeBossBar("Giant Pillager", BossBar.Color.RED, BossBar.Style.PROGRESS, false);
+        bossBar = (ServerBossBar)(new ServerBossBar(this.getDisplayName(), BossBar.Color.RED, BossBar.Style.PROGRESS)).setDarkenSky(false);
     }
 
     public static DefaultAttributeContainer.Builder createGiantPillagerBossEntityAttributes() {
