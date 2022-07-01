@@ -13,7 +13,9 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Arm;
+import net.minecraft.util.Hand;
 import net.minecraft.village.raid.Raid;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
@@ -142,5 +144,11 @@ public class TowerOfUndyingEntity extends LivingEntity{
         return new ItemStack(TOWER_OF_UNDYING_ITEM);
     }
 
+    public boolean isPushable() {
+        return false;
+    }
+
+    protected void pushAway(Entity entity) {
+    }
 
 }
