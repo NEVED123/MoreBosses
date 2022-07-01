@@ -27,12 +27,12 @@ public class MoreBosses implements ModInitializer {
 
 	public static final EntityType<ZombieScarecrowEntity> ZOMBIE_SCARECROW_ENTITY =
 			Registry.register(Registry.ENTITY_TYPE, new Identifier("more_bosses","zombie_scarecrow"),
-					FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, ZombieScarecrowEntity::new). //CHANGE SPAWNGROUP TO MISC
-							dimensions(EntityDimensions.fixed(0.75f,1.9f)).build());
+					FabricEntityTypeBuilder.create(SpawnGroup.MISC, ZombieScarecrowEntity::new)
+							.dimensions(EntityDimensions.fixed(0.75f,1.9f)).build());
 
 	public static final EntityType<TowerOfUndyingEntity> TOWER_OF_UNDYING_ENTITY =
 			Registry.register(Registry.ENTITY_TYPE, new Identifier("more_bosses","tower_of_undying"),
-			FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, TowerOfUndyingEntity::new)
+			FabricEntityTypeBuilder.create(SpawnGroup.MISC, TowerOfUndyingEntity::new)
 					.dimensions(EntityDimensions.fixed(.25F, 1.0F))
 					.build());
 
