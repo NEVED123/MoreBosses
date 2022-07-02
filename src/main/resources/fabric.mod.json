@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "more_bosses",
-  "version": "${version}",
+  "version": "1.0",
 
   "name": "MoreBosses",
   "description": "Minecraft Mod which aims to add more bosses, to make those bosses more difficult to find/kill, and get more reward from killing them",
@@ -32,7 +32,7 @@
   "depends": {
     "fabricloader": ">=0.13.3",
     "fabric": "*",
-    "minecraft": "~1.18.2",
+    "minecraft": "~1.19",
     "java": ">=17"
   },
   "suggests": {

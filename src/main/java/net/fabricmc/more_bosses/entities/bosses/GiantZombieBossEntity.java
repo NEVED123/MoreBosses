@@ -12,7 +12,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.LiteralText;
 import net.minecraft.world.World;
 
 public class GiantZombieBossEntity extends GiantBossEntity {
@@ -65,8 +64,7 @@ public class GiantZombieBossEntity extends GiantBossEntity {
         super.onDeath(source);
     }
 
-    @Override
-    protected int getXpToDrop(PlayerEntity player) {
+    public int getXpToDrop() {
         return 7500;
     }
 }

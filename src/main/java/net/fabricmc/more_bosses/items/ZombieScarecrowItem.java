@@ -46,7 +46,6 @@ public class ZombieScarecrowItem extends Item {
                     zombieScarecrowEntity.refreshPositionAndAngles(zombieScarecrowEntity.getX(), zombieScarecrowEntity.getY(), zombieScarecrowEntity.getZ(), f, 0.0F);
                     serverWorld.spawnEntityAndPassengers(zombieScarecrowEntity);
                     world.playSound((PlayerEntity)null, zombieScarecrowEntity.getX(), zombieScarecrowEntity.getY(), zombieScarecrowEntity.getZ(), SoundEvents.ENTITY_ARMOR_STAND_PLACE, SoundCategory.BLOCKS, 0.75F, 0.8F);
-                    world.emitGameEvent(context.getPlayer(), GameEvent.ENTITY_PLACE, zombieScarecrowEntity);
                 }
 
                 itemStack.decrement(1);

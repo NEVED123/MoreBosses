@@ -70,7 +70,6 @@ public class ZombieScarecrowEntity extends LivingEntity {
                         long l = this.world.getTime();
                         if (l - this.lastHitTime > 5L && !bl) {
                             this.world.sendEntityStatus(this, (byte)32);
-                            this.emitGameEvent(GameEvent.ENTITY_DAMAGED, source.getAttacker());
                             this.lastHitTime = l;
                         } else {
                             this.breakAndDropItem(source);
@@ -128,7 +127,6 @@ public class ZombieScarecrowEntity extends LivingEntity {
             this.remove(RemovalReason.DISCARDED);
         } else {
             this.setHealth(f);
-            this.emitGameEvent(GameEvent.ENTITY_DAMAGED, damageSource.getAttacker());
         }
 
     }

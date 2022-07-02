@@ -17,13 +17,10 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.LiteralText;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.World;
-
-import java.sql.SQLOutput;
 import java.util.Random;
 
 import static net.fabricmc.more_bosses.MoreBosses.SLEEPING_PILLAGER_SOUL;
@@ -123,7 +120,7 @@ public class GiantPillagerBossEntity extends GiantBossEntity{
     }
 
     @Override
-    protected int getXpToDrop(PlayerEntity player) {
+    public int getXpToDrop() {
         return 10000;
     }
 
